@@ -1,10 +1,5 @@
 import { useEffect, useState } from 'react';
-
-type ApiErrorType = {
-	error: boolean;
-	status: number | null;
-	statusText: string;
-};
+import type { ApiErrorType } from '../const/ErrorApiType';
 
 export const useApi = <T>(url: string) => {
 	const [data, setData] = useState<T | null>(null);

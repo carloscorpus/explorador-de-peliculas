@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import { TypesMovies } from '../../const/SearchType';
+import { TypesMovies } from '../../libs/const/SearchType';
 
 export const NavFilterDrawer = () => {
 	const [open, setOpen] = useState(false);
