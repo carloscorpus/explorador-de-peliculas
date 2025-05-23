@@ -5,11 +5,11 @@ export interface URLAPIResponseID {
 }
 
 export interface Search {
-	Title: string;
-	Year: string;
-	imdbID: string;
-	Type: Type;
-	Poster: string;
+	Title?: string;
+	Year?: string;
+	imdbID?: string;
+	Type?: Type;
+	Poster?: string;
 }
 
 export type Type = 'game' | 'movie' | 'series';

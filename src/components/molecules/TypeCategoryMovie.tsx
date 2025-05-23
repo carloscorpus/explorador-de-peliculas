@@ -1,5 +1,5 @@
 import { ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import { TypesMovies } from '../../const/SearchType';
+import { TypesMovies } from '../../libs/const/SearchType';
 
 type TypeCategoryMovieProps = {
 	text?: boolean;
