@@ -4,21 +4,6 @@ import { AllMovies } from '../components/organisms/AllMovies';
 import { Header } from '../components/organisms/Header';
 
 export const RouteApp = () => {
-	// 	const routes = createBrowserRouter([
-	// 		{
-	// 			path: '/',
-	// 			element: <RootLayout />,
-	// 			children: [
-	// 				{
-	// 					index: true,
-	// 					element: <AllMovies />,
-	// 				},
-	// 			],
-	// 		},
-	// 	]);
-	// MemoriR
-	// 	return <RouterProvider router={routes} />;
-
 	return (
 		<>
 			<Header />
