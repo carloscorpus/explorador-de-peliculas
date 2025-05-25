@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { AllMovies } from '../components/organisms/AllMovies';
 import { Header } from '../components/organisms/Header';
+import { ErrorPage } from '../components/organisms/ErrorPage';
 
 export const RouteApp = () => {
 	return (
@@ -13,9 +14,11 @@ export const RouteApp = () => {
 				<Route
 					path="*"
 					element={
-						<>
-							<div>MONGOL</div>
-						</>
+						<ErrorPage
+							message="Page not found"
+							status="404"
+							statusText="No results were found with the requested URL"
+						/>
 					}
 				/>
 			</Routes>

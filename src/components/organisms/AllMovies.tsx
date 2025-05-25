@@ -5,16 +5,23 @@ import { ListItemCard } from '../molecules/ListItemCard';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { PaginationMain } from '../molecules/PaginationMain';
 import { useContextAllMovies } from '../../libs/hooks/useContextAllCategories';
+import { ErrorPage } from './ErrorPage';
 
 export const AllMovies = () => {
-	const { data } = useContextAllMovies();
-
+	const { data, error } = useContextAllMovies();
 	return (
 		<>
-			<Container maxWidth={'xl'} component={'main'}>
-				<Grid container spacing={3} component={'section'} justifyContent={'center'}>
-					{data?.Response === 'True' &&
-						data.Search.map((movie) => {
+			{data?.Response === 'False' && (
+				<ErrorPage
+					status={error.status || 503}
+					statusText="No results were found for your search. Return to the main page."
+					message="No results found"
+				/>
+			)}
+			{data?.Response === 'True' && (
+				<Container maxWidth={'xl'} component={'main'}>
+					<Grid container spacing={3} component={'section'} justifyContent={'center'}>
+						{data.Search.map((movie) => {
 							return (
 								<Grid
 									key={movie.imdbID}
@@ -64,9 +71,10 @@ export const AllMovies = () => {
 								</Grid>
 							);
 						})}
-				</Grid>
-				<PaginationMain />
-			</Container>
+					</Grid>
+					<PaginationMain />
+				</Container>
+			)}
 		</>
 	);
 };
