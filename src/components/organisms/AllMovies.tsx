@@ -1,19 +1,14 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, List, Typography } from '@mui/material';
-import type { ApiErrorType } from '../../libs/const/ErrorApiType';
-import type { URLAPIResponseID } from '../../libs/types/typeAllMoviesSearch';
-
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import MovieEditIcon from '@mui/icons-material/MovieEdit';
-import { ListItemCard } from '../molecules/ListItemCard';
+import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, List, Typography } from '@mui/material';
 import { capitalize } from '../../libs/helpers/capitalize';
-type AllMoviesProps = {
-	data: URLAPIResponseID | null;
-	error: ApiErrorType;
-	loading: boolean;
-};
+import { ListItemCard } from '../molecules/ListItemCard';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import { PaginationMain } from '../molecules/PaginationMain';
+import { useContextAllMovies } from '../../libs/hooks/useContextAllCategories';
 
-export const AllMovies = ({ data, error, loading }: AllMoviesProps) => {
-	console.log(data, error, loading);
+export const AllMovies = () => {
+	const { data } = useContextAllMovies();
+
 	return (
 		<>
 			<Container maxWidth={'xl'} component={'main'}>
@@ -70,6 +65,7 @@ export const AllMovies = ({ data, error, loading }: AllMoviesProps) => {
 							);
 						})}
 				</Grid>
+				<PaginationMain />
 			</Container>
 		</>
 	);
