@@ -22,7 +22,6 @@ export const AllCategoriesStateContex = ({ children }: AllCategoriesStateContexP
 	const limitPages = 10;
 	const amountPages = data && isSuccessResponse(data) ? Math.ceil(parseInt(data.totalResults) / limitPages) : 0;
 
-	console.log(data, 'data');
 	return (
 		<AllCategoriesDataContext.Provider value={{ data, error, loading, amountPages, pageActuality: pageFromURL }}>
 			{children}
