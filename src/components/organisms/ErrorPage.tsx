@@ -1,0 +1,46 @@
+import { Box, Button, Container, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
+import imgError from '../../assets/PageNotFound.svg';
+type ErrorPageProps = {
+	status: string | number;
+	statusText: string;
+	message: string;
+};
+
+export const ErrorPage = ({ status, statusText, message }: ErrorPageProps) => {
+	return (
+		<Container maxWidth={'xl'}>
+			<Box
+				sx={{
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center',
+					flexWrap: 'wrap',
+					gap: 2,
+					margin: '1rem 0',
+				}}
+			>
+				<Box>
+					<Typography variant="body1">ERROR CODE {status}.</Typography>
+					<Typography
+						variant="h2"
+						sx={{ color: 'secondary.main', fontSize: { xs: '2rem', md: '3.5rem', lg: '4.5rem' } }}
+						gutterBottom
+					>
+						{message}.
+					</Typography>
+					<Typography variant="body1">{statusText}.</Typography>
+					<Button
+						component={Link}
+						to="/"
+						variant="contained"
+						sx={{ margin: '0.5rem 0', bgcolor: 'secondary.main', color: 'background.default' }}
+					>
+						Home
+					</Button>
+				</Box>
+				<Box component={'img'} src={imgError} sx={{ maxHeight: 320 }} />
+			</Box>
+		</Container>
+	);
+};

@@ -57,7 +57,6 @@ export const useApi = <T>(url: string) => {
 			}
 		};
 		getData();
-
 		return () => {
 			controller.abort();
 		};
