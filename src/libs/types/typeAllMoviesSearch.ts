@@ -1,7 +1,8 @@
-export interface URLAPIResponseID {
+type ResponseTypeApi = 'True' | 'False';
+export interface OMDBSuccessResponse {
 	Search: Search[];
 	totalResults: string;
-	Response: string;
+	Response: ResponseTypeApi;
 }
 
 export interface Search {
@@ -13,3 +14,9 @@ export interface Search {
 }
 
 export type Type = 'game' | 'movie' | 'series';
+
+export type OMBDErrorResponse = {
+	Response: 'False';
+	Error: ResponseTypeApi;
+};
+export type URLAPIResponseID = OMBDErrorResponse | OMDBSuccessResponse;
