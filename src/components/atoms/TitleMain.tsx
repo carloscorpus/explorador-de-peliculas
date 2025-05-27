@@ -1,9 +1,16 @@
-import { Typography } from '@mui/material';
+import { Typography, type SxProps, type Theme, type TypographyProps } from '@mui/material';
+import type { ElementType, ReactNode } from 'react';
+type TitleMainProps = {
+	children: ReactNode;
+	component: ElementType;
+	variant?: TypographyProps['variant'];
+	sx?: SxProps<Theme> | undefined;
+};
 
-export const TitleMain = () => {
+export const TitleMain = ({ children, component, variant, sx = {} }: TitleMainProps) => {
 	return (
-		<Typography variant="h6" component={'h1'} sx={{ flexGrow: 1, color: 'secondary.main' }}>
-			Free movies
+		<Typography variant={variant} component={component} sx={sx}>
+			{children}
 		</Typography>
 	);
 };

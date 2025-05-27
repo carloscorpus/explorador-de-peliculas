@@ -1,4 +1,5 @@
-type ResponseTypeApi = 'True' | 'False';
+export type ResponseTypeApi = 'True' | 'False';
+
 export interface OMDBSuccessResponse {
 	Search: Search[];
 	totalResults: string;
@@ -19,4 +20,5 @@ export type OMBDErrorResponse = {
 	Response: 'False';
 	Error: ResponseTypeApi;
 };
+
 export type URLAPIResponseID = OMBDErrorResponse | OMDBSuccessResponse;
