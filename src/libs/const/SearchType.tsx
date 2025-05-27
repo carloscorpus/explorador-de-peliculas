@@ -12,7 +12,7 @@ export const TypesMovies = [
 		icon: <CameraRollOutlinedIcon />,
 	},
 	{
-		type: 'Episode',
+		type: 'Game',
 		icon: <OndemandVideoIcon />,
 	},
-];
+] as const;
