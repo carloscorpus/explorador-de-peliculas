@@ -35,6 +35,9 @@ export const BannerMain = () => {
 							title={data.Title}
 							image={data.Poster}
 							sx={{ height: { xs: 320, md: '100%' }, minWidth: { sm: 220 }, maxWidth: { sm: 320 } }}
+							onError={(e) => {
+								e.currentTarget.src = `https://placehold.co/600x400?text=${data.Title} :(`;
+							}}
 						/>
 
 						<Box>
