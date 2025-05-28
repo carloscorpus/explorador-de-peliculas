@@ -11,7 +11,7 @@ export const Header = () => {
 	const [openDrawer, setOpenDrawer] = useState(false);
 	return (
 		<>
-			<AppBar position="static" sx={{ bgcolor: 'primary.main' }}>
+			<AppBar position="sticky" sx={{ bgcolor: 'primary.main' }}>
 				<ContainerApp disableGutters={true} component={'div'}>
 					<Toolbar>
 						<LogoMain />
