@@ -13,6 +13,7 @@ import { BannerMain } from './BannerMain';
 
 export const AllMovies = () => {
 	const { data, error } = useContextAllMovies();
+
 	return (
 		<>
 			{data?.Response === 'False' && (
@@ -43,6 +44,9 @@ export const AllMovies = () => {
 												alt={`Poster of ${movie.Title}`}
 												sx={{ height: 320 }}
 												image={movie.Poster}
+												onError={(e) => {
+													e.currentTarget.src = `https://placehold.co/600x400?text=${movie.Title} :(`;
+												}}
 											/>
 
 											<CardContent sx={{ flexGrow: 1 }}>
