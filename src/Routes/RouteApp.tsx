@@ -4,12 +4,18 @@ import { AllMovies } from '../components/organisms/AllMovies';
 import { Header } from '../components/organisms/Header';
 import { ErrorPage } from '../components/organisms/ErrorPage';
 import { ContainerApp } from '../components/atoms/ContainerApp';
+import { SearchMovie } from '../components/organisms/SearchMovie';
 
 export const RouteApp = () => {
 	return (
 		<>
 			<Header />
-			<ContainerApp disableGutters={true} component={'div'}>
+			<SearchMovie />
+			<ContainerApp
+				disableGutters={true}
+				component={'div'}
+				sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}
+			>
 				<Routes>
 					<Route index element={<Navigate to="allmovies?page=1" replace />} />
 					<Route path="allmovies" element={<AllMovies />} />
