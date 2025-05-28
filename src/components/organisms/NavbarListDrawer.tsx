@@ -1,6 +1,6 @@
 import { Box, Divider, List } from '@mui/material';
 import { TypeCategoryMovie } from '../molecules/TypeCategoryMovie';
-import { NavFilterDrawer } from './NavFilterDrawer';
+import { SearchMovie } from './SearchMovie';
 export const NavbarListDrawer = () => {
 	return (
 		<>
@@ -9,8 +9,8 @@ export const NavbarListDrawer = () => {
 					<List>
 						<TypeCategoryMovie icon={true} text={true} />
 						<Divider />
+						<SearchMovie xs="block" md="none" />
 					</List>
-					<NavFilterDrawer />
 				</nav>
 			</Box>
 		</>

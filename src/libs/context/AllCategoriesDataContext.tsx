@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, type Dispatch, type SetStateAction } from 'react';
 import type { URLAPIResponseID } from '../types/typeAllMoviesSearch';
 import type { ApiErrorType } from '../const/ErrorApiType';
 
@@ -8,6 +8,8 @@ type AllCategoriesDataContextType = {
 	loading: boolean;
 	amountPages: number;
 	pageActuality: number;
+	setMovie: Dispatch<SetStateAction<string>>;
+	movie: string;
 };
 
 export const AllCategoriesDataContext = createContext<AllCategoriesDataContextType | null>(null);

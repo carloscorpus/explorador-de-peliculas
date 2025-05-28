@@ -25,7 +25,7 @@ export const AllMovies = () => {
 			{data?.Response === 'True' && (
 				<>
 					<BannerMain />
-					<ContainerApp component={'main'}>
+					<ContainerApp component={'main'} sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
 						<Grid container spacing={3} component={'section'} justifyContent={'center'}>
 							{data.Search.map((movie) => {
 								return (
