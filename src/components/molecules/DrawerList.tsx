@@ -9,7 +9,12 @@ type DrawerListProps = {
 
 export const DrawerList = ({ openDrawer, setOpenDrawer }: DrawerListProps) => {
 	return (
-		<Drawer open={openDrawer} anchor="left" onClose={() => setOpenDrawer(false)}>
+		<Drawer
+			open={openDrawer}
+			anchor="left"
+			onClose={() => setOpenDrawer(false)}
+			sx={{ display: { xs: 'flex', md: 'none' } }}
+		>
 			<NavbarListDrawer />
 		</Drawer>
 	);
