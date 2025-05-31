@@ -31,7 +31,16 @@ export const AllCategoriesStateContex = ({ children }: AllCategoriesStateContexP
 
 	return (
 		<AllCategoriesDataContext.Provider
-			value={{ data, error, loading, amountPages, pageActuality: pageFromURL, setMovie, movie }}
+			value={{
+				data,
+				error,
+				loading,
+				amountPages,
+				pageActuality: pageFromURL,
+				setMovie,
+				movie,
+
+			}}
 		>
 			{children}
 		</AllCategoriesDataContext.Provider>

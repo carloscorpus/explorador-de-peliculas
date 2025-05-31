@@ -10,9 +10,26 @@ import { CardMain } from '../atoms/CardMain';
 import { ContainerApp } from '../atoms/ContainerApp';
 import { TitleMain } from '../atoms/TitleMain';
 import { BannerMain } from './BannerMain';
+import { DialogApp } from '../molecules/DialogApp';
+import { useState } from 'react';
 
 export const AllMovies = () => {
+	const [movieSelected, setMovieSelected] = useState<string>('');
 	const { data, error } = useContextAllMovies();
+	const [open, setOpen] = useState(false);
+
+	const _handleOnClick = (id: string) => {
+		if (id !== '') {
+			setOpen(true);
+			setMovieSelected(id);
+			return;
+		}
+	};
+
+	const _handleClickClose = () => {
+		setOpen(false);
+		setMovieSelected('');
+	};
 
 	return (
 		<>
@@ -73,6 +90,9 @@ export const AllMovies = () => {
 
 											<CardActions>
 												<Button
+													onClick={() => {
+														_handleOnClick(movie.imdbID ? movie.imdbID : '');
+													}}
 													sx={{ color: 'text.primary' }}
 													variant="contained"
 													color="inherit"
@@ -94,6 +114,7 @@ export const AllMovies = () => {
 						</Grid>
 						<PaginationMain />
 					</ContainerApp>
+					<DialogApp open={open} _handleClickClose={_handleClickClose} movieSelected={movieSelected} />
 				</>
 			)}
 		</>

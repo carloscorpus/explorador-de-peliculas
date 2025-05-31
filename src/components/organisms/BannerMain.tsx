@@ -1,20 +1,14 @@
 import { Box, Button, CardActions, CardContent, CardMedia } from '@mui/material';
 import { CardMain } from '../atoms/CardMain';
-import { useApi } from '../../libs/hooks/useApi';
-import type { URLAPIMovie } from '../../libs/types/typeMovie';
 import { ListItemCard } from '../molecules/ListItemCard';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import MovieEditIcon from '@mui/icons-material/MovieEdit';
 import { ContainerApp } from '../atoms/ContainerApp';
 import { TitleMain } from '../atoms/TitleMain';
-import { useContextAllMovies } from '../../libs/hooks/useContextAllCategories';
+import { useMovieDetailBanner } from '../../libs/hooks/useMovieDetailBanner';
 
 export const BannerMain = () => {
-	const { movie } = useContextAllMovies();
-
-	const API_KEY_OMDB = import.meta.env.VITE_API_KEY_OMDB;
-	const URL_OMDB = `http://www.omdbapi.com/?apikey=${API_KEY_OMDB}&t=${movie}&plot=full`;
-	const { data } = useApi<URLAPIMovie>(URL_OMDB);
+	const { data } = useMovieDetailBanner();
 
 	return (
 		<>
