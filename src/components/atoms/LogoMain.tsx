@@ -8,7 +8,7 @@ export const LogoMain = () => {
 
 	const { setMovie } = useContextAllMovies();
 	const _handleOnClick = () => {
-		setMovie('barbie');
+		setMovie('batman');
 		navigate('/allmovies?page=1');
 	};
 
