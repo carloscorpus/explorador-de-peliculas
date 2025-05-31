@@ -11,6 +11,7 @@ export const PaginationMain = () => {
 	const _handleOnChange = (_: React.ChangeEvent<unknown>, value: number) => {
 		setSearchParams({ page: value.toString() });
 	};
+
 	return (
 		<Pagination
 			count={amountPages}

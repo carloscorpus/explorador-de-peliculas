@@ -1,18 +1,20 @@
-import LocalMoviesOutlinedIcon from '@mui/icons-material/LocalMoviesOutlined';
-import CameraRollOutlinedIcon from '@mui/icons-material/CameraRollOutlined';
-import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
-
+import FacebookIcon from '@mui/icons-material/Facebook';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 export const TypesMovies = [
 	{
-		type: 'Movie',
-		icon: <LocalMoviesOutlinedIcon />,
+		type: 'Linkedin',
+		url: 'https://linkedin.com/in/corpusdev',
+		icon: <LinkedInIcon sx={{ fontSize: 32 }} />,
 	},
 	{
-		type: 'Serie',
-		icon: <CameraRollOutlinedIcon />,
+		type: 'Github',
+		url: 'https://github.com/carloscorpus/explorador-de-peliculas',
+		icon: <GitHubIcon sx={{ fontSize: 32 }} />,
 	},
 	{
-		type: 'Game',
-		icon: <OndemandVideoIcon />,
+		type: 'Facebook',
+		url: 'https://www.facebook.com/roberto.corpussusanibar/',
+		icon: <FacebookIcon sx={{ fontSize: 32 }} />,
 	},
 ] as const;

@@ -6,14 +6,18 @@ type TypeCategoryMovieProps = {
 	icon?: boolean;
 };
 
-export const TypeCategoryMovie = ({ text, icon }: TypeCategoryMovieProps) => {
+export const RedesSociales = ({ text, icon }: TypeCategoryMovieProps) => {
 	return (
 		<>
 			{TypesMovies.map((type, i) => {
 				return (
 					<ListItem key={i} sx={{ color: 'text.primary' }} disablePadding>
-						<ListItemButton component="a" href="#">
-							{icon && <ListItemIcon>{type.icon}</ListItemIcon>}
+						<ListItemButton component="a" href={type.url} target="_blank" rel="noopener noreferrer">
+							{icon && (
+								<ListItemIcon sx={{ display: 'flex', justifyContent: 'center' }}>
+									{type.icon}
+								</ListItemIcon>
+							)}
 							{text && <ListItemText primary={type.type} />}
 						</ListItemButton>
 					</ListItem>

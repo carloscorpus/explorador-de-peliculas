@@ -10,12 +10,13 @@ type AllCategoriesStateContexProps = {
 };
 
 export const AllCategoriesStateContex = ({ children }: AllCategoriesStateContexProps) => {
-	const [movie, setMovie] = useState<string>('barbie');
+	const [movie, setMovie] = useState<string>('batman');
 
 	const API_KEY_OMDB = import.meta.env.VITE_API_KEY_OMDB;
 	const location = useLocation();
 
 	const [searchParams] = useSearchParams();
+
 	const pageFromURL = Number(searchParams.get('page'));
 	const consultaInvalida = location.pathname !== '/allmovies';
 
@@ -27,6 +28,7 @@ export const AllCategoriesStateContex = ({ children }: AllCategoriesStateContexP
 
 	const limitPages = 10;
 	const amountPages = data && isSuccessResponse(data) ? Math.ceil(parseInt(data.totalResults) / limitPages) : 0;
+
 	return (
 		<AllCategoriesDataContext.Provider
 			value={{ data, error, loading, amountPages, pageActuality: pageFromURL, setMovie, movie }}
