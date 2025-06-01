@@ -1,20 +1,17 @@
 import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
-import { IconButton } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { Box, IconButton } from '@mui/material';
+import { Link } from 'react-router-dom';
 import { useContextAllMovies } from '../../libs/hooks/useContextAllCategories';
 
 export const LogoMain = () => {
-	const navigate = useNavigate();
-
 	const { setMovie } = useContextAllMovies();
-	const _handleOnClick = () => {
-		setMovie('batman');
-		navigate('/allmovies?page=1');
-	};
+	const _handleOnClick = () => setMovie('batman');
 
 	return (
-		<IconButton onClick={_handleOnClick}>
-			<TheaterComedyIcon sx={{ color: 'secondary.main' }} />
-		</IconButton>
+		<Box component={Link} to="/allmovies?page=1" onClick={_handleOnClick}>
+			<IconButton>
+				<TheaterComedyIcon sx={{ color: 'secondary.main' }} />
+			</IconButton>
+		</Box>
 	);
 };

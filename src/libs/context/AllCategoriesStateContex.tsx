@@ -39,7 +39,6 @@ export const AllCategoriesStateContex = ({ children }: AllCategoriesStateContexP
 				pageActuality: pageFromURL,
 				setMovie,
 				movie,
-
 			}}
 		>
 			{children}

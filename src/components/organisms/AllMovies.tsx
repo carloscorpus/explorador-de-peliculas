@@ -36,7 +36,7 @@ export const AllMovies = () => {
 			{data?.Response === 'False' && (
 				<ErrorPage
 					status={error.status || 503}
-					statusText="No results were found for your search. Return to the main page."
+					statusText="No results were found for your search. Return to the main page"
 					message="No results found"
 				/>
 			)}

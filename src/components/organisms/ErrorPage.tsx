@@ -1,6 +1,7 @@
 import { Box, Button, Container, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import imgError from '../../assets/PageNotFound.svg';
+import { useContextAllMovies } from '../../libs/hooks/useContextAllCategories';
 type ErrorPageProps = {
 	status: string | number;
 	statusText: string;
@@ -8,6 +9,8 @@ type ErrorPageProps = {
 };
 
 export const ErrorPage = ({ status, statusText, message }: ErrorPageProps) => {
+	const { setMovie } = useContextAllMovies();
+	const _handleOnClick = () => setMovie('batman');
 	return (
 		<Container maxWidth={'xl'}>
 			<Box
@@ -32,7 +35,8 @@ export const ErrorPage = ({ status, statusText, message }: ErrorPageProps) => {
 					<Typography variant="body1">{statusText}.</Typography>
 					<Button
 						component={Link}
-						to="/"
+						to="/allmovies?page=1"
+						onClick={_handleOnClick}
 						variant="contained"
 						sx={{ margin: '0.5rem 0', bgcolor: 'secondary.main', color: 'background.default' }}
 					>
