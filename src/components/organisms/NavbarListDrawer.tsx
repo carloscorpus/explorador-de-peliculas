@@ -1,6 +1,7 @@
 import { Box, Divider, List } from '@mui/material';
 import { RedesSociales } from '../molecules/RedesSociales';
 import { SearchMovie } from './SearchMovie';
+
 export const NavbarListDrawer = () => {
 	return (
 		<>

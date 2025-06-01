@@ -9,15 +9,18 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { AllCategoriesStateContex } from './libs/context/AllCategoriesStateContex.tsx';
 import { BrowserRouter } from 'react-router-dom';
+import { DrawerIsOpenStateContext } from './libs/context/DrawerIsOpenStateContext.tsx';
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
 		<BrowserRouter>
 			<AllCategoriesStateContex>
-				<ThemeProvider theme={theme}>
-					<CssBaseline />
-					<App />
-				</ThemeProvider>
+				<DrawerIsOpenStateContext>
+					<ThemeProvider theme={theme}>
+						<CssBaseline />
+						<App />
+					</ThemeProvider>
+				</DrawerIsOpenStateContext>
 			</AllCategoriesStateContex>
 		</BrowserRouter>
 	</StrictMode>

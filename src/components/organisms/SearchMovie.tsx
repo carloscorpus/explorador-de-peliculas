@@ -2,6 +2,7 @@ import { ContainerApp } from '../atoms/ContainerApp';
 import { useState, type FormEvent } from 'react';
 import { useContextAllMovies } from '../../libs/hooks/useContextAllCategories';
 import { SearchForm } from '../molecules/SearchForm';
+import { useContextDrawerIsOpen } from '../../libs/hooks/useContextDrawerIsOpen';
 
 type SearchMovieProps = {
 	xs?: string | undefined;
@@ -13,6 +14,7 @@ export const SearchMovie = ({ xs = 'none', md = 'block' }: SearchMovieProps) => 
 	const [error, setError] = useState(false);
 	const [messageError, setMessageError] = useState('');
 	const { setMovie } = useContextAllMovies();
+	const { setOpenDrawer } = useContextDrawerIsOpen();
 
 	const _handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -24,6 +26,7 @@ export const SearchMovie = ({ xs = 'none', md = 'block' }: SearchMovieProps) => 
 		setMessageError('');
 		setError(false);
 		setMovie(valueInput);
+		setOpenDrawer(false);
 		_handleReset();
 	};
 

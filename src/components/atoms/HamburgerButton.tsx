@@ -1,11 +1,10 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import { IconButton } from '@mui/material';
-import type { Dispatch, SetStateAction } from 'react';
+import { useContextDrawerIsOpen } from '../../libs/hooks/useContextDrawerIsOpen';
 
-type HamburgerButtonProps = {
-	setOpenDrawer: Dispatch<SetStateAction<boolean>>;
-};
-export const HamburgerButton = ({ setOpenDrawer }: HamburgerButtonProps) => {
+export const HamburgerButton = () => {
+	const { setOpenDrawer } = useContextDrawerIsOpen();
+
 	return (
 		<IconButton onClick={() => setOpenDrawer(true)} sx={{ display: { sx: 'block', md: 'none' } }}>
 			<MenuIcon />
