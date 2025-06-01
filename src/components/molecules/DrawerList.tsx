@@ -1,13 +1,9 @@
 import { Drawer } from '@mui/material';
 import { NavbarListDrawer } from '../organisms/NavbarListDrawer';
-import type { Dispatch, SetStateAction } from 'react';
+import { useContextDrawerIsOpen } from '../../libs/hooks/useContextDrawerIsOpen';
 
-type DrawerListProps = {
-	openDrawer: boolean;
-	setOpenDrawer: Dispatch<SetStateAction<boolean>>;
-};
-
-export const DrawerList = ({ openDrawer, setOpenDrawer }: DrawerListProps) => {
+export const DrawerList = () => {
+    const { openDrawer, setOpenDrawer } = useContextDrawerIsOpen();
 	return (
 		<Drawer
 			open={openDrawer}

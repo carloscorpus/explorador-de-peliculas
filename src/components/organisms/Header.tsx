@@ -1,5 +1,4 @@
 import { AppBar, Box, List, Toolbar } from '@mui/material';
-import { useState } from 'react';
 import { LogoMain } from '../atoms/LogoMain';
 import { TitleMain } from '../atoms/TitleMain';
 import { HamburgerButton } from '../atoms/HamburgerButton';
@@ -8,7 +7,6 @@ import { RedesSociales } from '../molecules/RedesSociales';
 import { ContainerApp } from '../atoms/ContainerApp';
 
 export const Header = () => {
-	const [openDrawer, setOpenDrawer] = useState(false);
 	return (
 		<>
 			<AppBar position="sticky" sx={{ bgcolor: 'primary.main' }}>
@@ -23,12 +21,12 @@ export const Header = () => {
 								<RedesSociales icon={true} />
 							</List>
 						</Box>
-						<HamburgerButton setOpenDrawer={setOpenDrawer} />
+						<HamburgerButton />
 					</Toolbar>
 				</ContainerApp>
 			</AppBar>
 
-			<DrawerList openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
+			<DrawerList />
 		</>
 	);
 };
