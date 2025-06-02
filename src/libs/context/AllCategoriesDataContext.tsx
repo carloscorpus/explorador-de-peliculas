@@ -10,6 +10,8 @@ type AllCategoriesDataContextType = {
 	pageActuality: number;
 	setMovie: Dispatch<SetStateAction<string>>;
 	movie: string;
+
+	parametroMovies: string;
 };
 
 export const AllCategoriesDataContext = createContext<AllCategoriesDataContextType | null>(null);

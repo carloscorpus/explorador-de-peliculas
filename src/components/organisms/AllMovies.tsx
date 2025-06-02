@@ -1,5 +1,5 @@
 import MovieEditIcon from '@mui/icons-material/MovieEdit';
-import { Button, CardActions, CardContent, CardMedia, Grid, List } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import { capitalize } from '../../libs/helpers/capitalize';
 import { ListItemCard } from '../molecules/ListItemCard';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -12,23 +12,26 @@ import { TitleMain } from '../atoms/TitleMain';
 import { BannerMain } from './BannerMain';
 import { DialogApp } from '../molecules/DialogApp';
 import { useState } from 'react';
+import { CardMediaMain } from '../atoms/CardMediaMain';
+import { CardContentMain } from '../atoms/CardContentMain';
+import { CardListMain } from '../atoms/CardListMain';
+import { CardActionsMain } from '../atoms/CardActionsMain';
+import { BtnAllDeatils } from '../atoms/BtnAllDeatils';
 
 export const AllMovies = () => {
-	const [movieSelected, setMovieSelected] = useState<string>('');
+	const [movieSelectedModal, setMovieSelectedModal] = useState('');
 	const { data, error } = useContextAllMovies();
+
 	const [open, setOpen] = useState(false);
 
 	const _handleOnClick = (id: string) => {
-		if (id !== '') {
-			setOpen(true);
-			setMovieSelected(id);
-			return;
-		}
+		setMovieSelectedModal(id);
+		setOpen(true);
 	};
 
 	const _handleClickClose = () => {
 		setOpen(false);
-		setMovieSelected('');
+		setMovieSelectedModal('');
 	};
 
 	return (
@@ -56,25 +59,20 @@ export const AllMovies = () => {
 										id={`movie-${movie.imdbID}-title`}
 									>
 										<CardMain sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-											<CardMedia
-												component="img"
-												alt={`Poster of ${movie.Title}`}
+											<CardMediaMain
 												sx={{ height: 320 }}
 												image={movie.Poster}
-												onError={(e) => {
-													e.currentTarget.src = `https://placehold.co/600x400?text=${movie.Title} :(`;
-												}}
+												alt={`Poster of ${movie.Title}`}
 											/>
-
-											<CardContent sx={{ flexGrow: 1 }}>
+											<CardContentMain sx={{ flexGrow: 1 }}>
 												<TitleMain
-													component={'h2'}
 													variant="h6"
+													component={'h2'}
 													sx={{ color: 'secondary.main' }}
 												>
 													{movie.Title}
 												</TitleMain>
-												<List>
+												<CardListMain>
 													<ListItemCard
 														type="Premiere"
 														data={movie.Year}
@@ -85,10 +83,10 @@ export const AllMovies = () => {
 														data={capitalize(movie.Type)}
 														iconCard={<MovieEditIcon />}
 													/>
-												</List>
-											</CardContent>
+												</CardListMain>
+											</CardContentMain>
 
-											<CardActions>
+											<CardActionsMain>
 												<Button
 													onClick={() => {
 														_handleOnClick(movie.imdbID ? movie.imdbID : '');
@@ -99,14 +97,9 @@ export const AllMovies = () => {
 												>
 													Summary
 												</Button>
-												<Button
-													sx={{ color: 'text.primary' }}
-													variant="contained"
-													color="inherit"
-												>
-													All details
-												</Button>
-											</CardActions>
+
+												<BtnAllDeatils id={movie.imdbID} />
+											</CardActionsMain>
 										</CardMain>
 									</Grid>
 								);
@@ -114,7 +107,11 @@ export const AllMovies = () => {
 						</Grid>
 						<PaginationMain />
 					</ContainerApp>
-					<DialogApp open={open} _handleClickClose={_handleClickClose} movieSelected={movieSelected} />
+					<DialogApp
+						open={open}
+						_handleClickClose={_handleClickClose}
+						movieSelectedModal={movieSelectedModal}
+					/>
 				</>
 			)}
 		</>

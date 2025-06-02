@@ -1,19 +1,19 @@
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { PoperComponent } from '../atoms/PoperComponent';
-import { useMovieModalDetail } from '../../libs/hooks/useMovieModalDetail';
+
 import { ListItemCard } from './ListItemCard';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import MovieEditIcon from '@mui/icons-material/MovieEdit';
+import { useMovieDetail } from '../../libs/hooks/useMovieDetail';
 type DialogAppProps = {
 	open: boolean;
 	_handleClickClose: () => void;
-	movieSelected: string;
+	movieSelectedModal: string;
 };
 
-export const DialogApp = ({ open, _handleClickClose, movieSelected }: DialogAppProps) => {
-	const { data } = useMovieModalDetail(movieSelected);
+export const DialogApp = ({ open, _handleClickClose, movieSelectedModal }: DialogAppProps) => {
+	const { data } = useMovieDetail(movieSelectedModal);
 
-	console.log(data);
 	return (
 		<Dialog
 			open={open}
@@ -62,7 +62,7 @@ export const DialogApp = ({ open, _handleClickClose, movieSelected }: DialogAppP
 			</DialogContent>
 			<DialogActions>
 				<Button autoFocus type="button" onClick={_handleClickClose} sx={{ color: 'secondary.main' }}>
-					Cerrar
+					Close
 				</Button>
 			</DialogActions>
 		</Dialog>
