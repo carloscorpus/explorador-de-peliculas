@@ -5,6 +5,7 @@ import { Header } from '../components/organisms/Header';
 import { ErrorPage } from '../components/organisms/ErrorPage';
 import { ContainerApp } from '../components/atoms/ContainerApp';
 import { SearchMovie } from '../components/organisms/SearchMovie';
+import { DisplayMovieDetail } from '../components/organisms/DisplayMovieDetail';
 
 export const RouteApp = () => {
 	return (
@@ -19,6 +20,7 @@ export const RouteApp = () => {
 				<Routes>
 					<Route index element={<Navigate to="allmovies?page=1" replace />} />
 					<Route path="allmovies" element={<AllMovies />} />
+					<Route path="detail/:movie" element={<DisplayMovieDetail />} />
 					<Route
 						path="*"
 						element={

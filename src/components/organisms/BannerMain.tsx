@@ -1,11 +1,17 @@
-import { Box, Button, CardActions, CardContent, CardMedia } from '@mui/material';
+import { Box } from '@mui/material';
 import { CardMain } from '../atoms/CardMain';
 import { ListItemCard } from '../molecules/ListItemCard';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import MovieEditIcon from '@mui/icons-material/MovieEdit';
+import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
 import { ContainerApp } from '../atoms/ContainerApp';
 import { TitleMain } from '../atoms/TitleMain';
 import { useMovieDetailBanner } from '../../libs/hooks/useMovieDetailBanner';
+import { CardMediaMain } from '../atoms/CardMediaMain';
+import { CardContentMain } from '../atoms/CardContentMain';
+import { CardListMain } from '../atoms/CardListMain';
+import { CardActionsMain } from '../atoms/CardActionsMain';
+import { BtnAllDeatils } from '../atoms/BtnAllDeatils';
 
 export const BannerMain = () => {
 	const { data } = useMovieDetailBanner();
@@ -18,24 +24,19 @@ export const BannerMain = () => {
 						sx={{
 							display: 'flex',
 							alignItems: 'center',
-							mt: 3,
-							padding: { xs: 0, sm: '1rem' },
 							flexDirection: { xs: 'column', sm: 'row' },
+							padding: { xs: 0, sm: '1rem' },
 						}}
 					>
-						<CardMedia
-							component="img"
+						<CardMediaMain
+							sx={{ height: { xs: 320, md: '100%' }, minWidth: { sm: 220 }, maxWidth: { sm: 320 } }}
+							image={data.Poster}
 							alt={`Poster of ${data.Title}`}
 							title={data.Title}
-							image={data.Poster}
-							sx={{ height: { xs: 320, md: '100%' }, minWidth: { sm: 220 }, maxWidth: { sm: 320 } }}
-							onError={(e) => {
-								e.currentTarget.src = `https://placehold.co/300x400?text=${data.Title} :(`;
-							}}
 						/>
 
 						<Box>
-							<CardContent>
+							<CardContentMain>
 								<TitleMain
 									variant="h6"
 									component={'h2'}
@@ -44,16 +45,13 @@ export const BannerMain = () => {
 											xs: '1.3rem',
 											sm: '1.75rem',
 											md: '2.5rem',
-											lg: '3rem',
+											lg: '3.75rem',
 										},
 										color: 'secondary.main',
 									}}
 								>
 									{data.Title}
 								</TitleMain>
-								<ListItemCard data={data.Released} type="Premier" iconCard={<CalendarMonthIcon />} />
-								<ListItemCard data={data.Type} type="Category" iconCard={<MovieEditIcon />} />
-
 								<TitleMain
 									component={'p'}
 									sx={{
@@ -65,13 +63,20 @@ export const BannerMain = () => {
 								>
 									{data.Plot}
 								</TitleMain>
-							</CardContent>
+								<CardListMain>
+									<ListItemCard
+										type="Premier"
+										data={data.Released}
+										iconCard={<CalendarMonthIcon />}
+									/>
+									<ListItemCard type="Category" data={data.Type} iconCard={<MovieEditIcon />} />
+									<ListItemCard type="Duration" data={data.Runtime} iconCard={<QueryBuilderIcon />} />
+								</CardListMain>
+							</CardContentMain>
 
-							<CardActions>
-								<Button sx={{ color: 'text.primary' }} variant="contained" color="inherit">
-									All details
-								</Button>
-							</CardActions>
+							<CardActionsMain>
+								<BtnAllDeatils id={data.imdbID} />
+							</CardActionsMain>
 						</Box>
 					</CardMain>
 				</ContainerApp>

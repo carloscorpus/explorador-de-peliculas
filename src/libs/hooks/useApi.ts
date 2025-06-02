@@ -11,6 +11,15 @@ export const useApi = <T>(url: string) => {
 	});
 
 	useEffect(() => {
+		if (!url) {
+			setData(null);
+			setError({
+				error: false,
+				status: null,
+				statusText: '',
+			});
+			return;
+		}
 		setLoading(true);
 		const controller = new AbortController();
 		const signal = controller.signal;
