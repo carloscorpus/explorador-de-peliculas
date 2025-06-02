@@ -43,7 +43,12 @@ export const ErrorPage = ({ status, statusText, message }: ErrorPageProps) => {
 						Home
 					</Button>
 				</Box>
-				<Box component={'img'} src={imgError} sx={{ maxHeight: 320 }} />
+				<Box sx={{ width: 320, textAlign: 'center' }}>
+					<Box component={'img'} src={imgError} alt="Web illustration from Storyset" title="Storyset" />
+					<Box component={'a'} href="https://storyset.com/web" target="_blank" rel="noopener noreferrer">
+						Web illustrations by Storyset
+					</Box>
+				</Box>
 			</Box>
 		</Container>
 	);
