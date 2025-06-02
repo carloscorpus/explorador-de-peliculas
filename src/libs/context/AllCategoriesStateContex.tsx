@@ -23,7 +23,7 @@ export const AllCategoriesStateContex = ({ children }: AllCategoriesStateContexP
 
 	const URL_OMBD = consultaInvalida
 		? ''
-		: `http://www.omdbapi.com/?apikey=${API_KEY_OMDB}&s=${movie}&page=${parametroPageURL}`;
+		: `https://www.omdbapi.com/?apikey=${API_KEY_OMDB}&s=${movie}&page=${parametroPageURL}`;
 
 	const { data, error, loading } = useApi<URLAPIResponseID>(URL_OMBD);
 
