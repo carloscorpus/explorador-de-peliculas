@@ -1,6 +1,6 @@
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { PoperComponent } from '../atoms/PoperComponent';
-
+import errorImg from '../../assets/errorImage.jpg';
 import { ListItemCard } from './ListItemCard';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import MovieEditIcon from '@mui/icons-material/MovieEdit';
@@ -49,9 +49,9 @@ export const DialogApp = ({ open, _handleClickClose, movieSelectedModal }: Dialo
 					alt={`Poster of ${data?.Title}`}
 					title={data?.Title}
 					src={data?.Poster}
-					sx={{ width: { xs: '220px', md: 'auto' } }}
+					sx={{ width: { xs: '220px', md: 'auto' }, maxWidth: 375 }}
 					onError={(e) => {
-						e.currentTarget.src = `https://placehold.co/300x400?text=${data?.Title} :(`;
+						e.currentTarget.src = `${errorImg}`;
 					}}
 				/>
 				<Box>

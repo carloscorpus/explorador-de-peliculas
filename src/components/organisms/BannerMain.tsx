@@ -12,14 +12,16 @@ import { CardContentMain } from '../atoms/CardContentMain';
 import { CardListMain } from '../atoms/CardListMain';
 import { CardActionsMain } from '../atoms/CardActionsMain';
 import { BtnAllDeatils } from '../atoms/BtnAllDeatils';
+import { LoadingBanner } from './LoadingBanner';
 
 export const BannerMain = () => {
-	const { data } = useMovieDetailBanner();
+	const { data, loading } = useMovieDetailBanner();
 
 	return (
 		<>
-			{data?.Response === 'True' && (
-				<ContainerApp disableGutters={false} component={'div'}>
+			{loading && <LoadingBanner />}
+			{!loading && data?.Response === 'True' && (
+				<ContainerApp disableGutters={false} component={'div'} sx={{ mt: { xs: 3, md: 0 } }}>
 					<CardMain
 						sx={{
 							display: 'flex',
