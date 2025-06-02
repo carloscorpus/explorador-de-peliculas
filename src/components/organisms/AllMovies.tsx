@@ -17,10 +17,11 @@ import { CardContentMain } from '../atoms/CardContentMain';
 import { CardListMain } from '../atoms/CardListMain';
 import { CardActionsMain } from '../atoms/CardActionsMain';
 import { BtnAllDeatils } from '../atoms/BtnAllDeatils';
+import { LoadingCardMain } from './LoadingCardMain';
 
 export const AllMovies = () => {
 	const [movieSelectedModal, setMovieSelectedModal] = useState('');
-	const { data, error } = useContextAllMovies();
+	const { data, error, loading } = useContextAllMovies();
 
 	const [open, setOpen] = useState(false);
 
@@ -28,7 +29,6 @@ export const AllMovies = () => {
 		setMovieSelectedModal(id);
 		setOpen(true);
 	};
-
 	const _handleClickClose = () => {
 		setOpen(false);
 		setMovieSelectedModal('');
@@ -43,7 +43,8 @@ export const AllMovies = () => {
 					message="No results found"
 				/>
 			)}
-			{data?.Response === 'True' && (
+			{loading && <LoadingCardMain />}
+			{!loading && data?.Response === 'True' && (
 				<>
 					<BannerMain />
 					<ContainerApp component={'main'} sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
@@ -85,7 +86,6 @@ export const AllMovies = () => {
 													/>
 												</CardListMain>
 											</CardContentMain>
-
 											<CardActionsMain>
 												<Button
 													onClick={() => {

@@ -1,4 +1,5 @@
 import { CardMedia, type SxProps, type Theme } from '@mui/material';
+import errorImg from '../../assets/errorImage.jpg';
 type CardMediaMainType = {
 	sx?: SxProps<Theme>;
 	image?: string | undefined;
@@ -14,7 +15,7 @@ export const CardMediaMain = ({ sx = {}, image, alt, title = '' }: CardMediaMain
 			alt={alt}
 			title={title}
 			onError={(e) => {
-				e.currentTarget.src = `https://placehold.co/300x400?text=${title ? title : alt} :(`;
+				e.currentTarget.src = `${errorImg}`;
 			}}
 		/>
 	);
